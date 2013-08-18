@@ -2,10 +2,12 @@
 
 class GreetingController extends Controller
 {
-	private $message = "Hello World!!";
+	private $message = "";
 
 	public function actionIndex()
 	{
+		$message = Message::model()->findByPk(2);
+		$this->message = $message->content;
 		$this->render('index', array("message" => $this->message));
 	}
 
